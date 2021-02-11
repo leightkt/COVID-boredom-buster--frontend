@@ -34,6 +34,7 @@ setActivityOptions()
 fetch(`${backendURL}users/${userId}`)
     .then(response => response.json())
     .then(user =>{
+        console.log(user)
         userName = user.user.name
         id = user.user.id
         $backLink.href = `https://covid-boredom-buster.web.app?name=${userName}`
