@@ -41,8 +41,23 @@ function displayActivity(activity){
     $activityPrice.textContent = `Price: ${setPrice(activity)}`
     $activityAccessibility.textContent = `Accessbility Rating: ${setAccessibility(activity)}`
 
-
     $postForm.classList.remove('hidden')
+
+    $postForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const postParams = `${makeSaveParams(activity)}&userID=${userID}`
+        fetch(`${backendURL}activities?${postParams}`, {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+            // .then(window.location.replace(`https://covid-boredom-buster.web.app/showFavorites.html?id=${userID}`))
+            .then(response => response.json())
+            .then(result => console.log(result))
+    
+    })
 }
 
 $postForm.addEventListener('submit', (event) => {
