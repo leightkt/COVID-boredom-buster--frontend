@@ -49,7 +49,7 @@ function displayActivity(activity){
 $postForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    fetch(`${backendURL}/activities?${postParams}`, {
+    fetch(`${backendURL}activities?${postParams}`, {
         method: "POST",
         headers: {
             "Accept": "application/json",
