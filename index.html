@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your #1 source of boredom bustin'</title>
+    <link rel="stylesheet" href="app.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>💥FEAR NOT! THE COVID BOREDOM BUSTER IS HERE💥</h1>
+    </header>
+    <main>
+        <section id="welcome">
+            <h2 id="user-name"></h2>
+        </section>
+        <form action="/" method="GET" id="sign-in-form">
+            
+            <label for="user-name">First things first, can I get a name on that?✍️</label>
+            <input type="text" id="user-name" name="name">
+            <input type="submit" value="Click to become legit! ✅">
+        </form>
+        <form action="/" method="GET" id="activity-select-form" class="hidden"> 
+            <label for="activity-type">Now tell me how you wanna beat that boredom? 🤕</label>
+            <select name="type" id="activity-type">
+            </select>
+            <button type="button" value="get-activity" id="get-button">Getchu a boredom beatin' tool 🔨</button>
+        </form>
+        <section id="display-activity">
+            <div id="activity-div">
+                <p id="activity-name"></p>
+                <p id="act-type"></p>
+                <p id="participants"></p>
+                <p id="price"></p>
+                <p id="accessibility"></p>
+                <form action="" method="POST" id="post-form" class="hidden">
+                    <button type="submit" value="Save Activity">Save me for later?</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer><button type="button" id="log-out" class="hidden">No, I want out! ⛔️</button></footer>
+</body>
+</html>

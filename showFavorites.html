@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BORED NO MORE! </title>
+    <link rel="stylesheet" href="app.css">
+    <script src="showFavorites.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Here here, a list of all of your favs! 🥳</h1>
+    </header>
+    <main>
+        <section id="search-section">
+            <form id="select-form" action="">
+                <select name="type" id="select-type"></select>
+                <button id="select-button" type="button">Filter Activies</button>
+            </form>
+            <form id="search-form" action="">
+                <label for="search">Search Favs:</label>
+                <input id="search" type="text" onkeyup="searchFilter()">
+            </form>
+        </section>
+        <section id="display-favorites"></section>
+    </main>
+    <footer>
+        <a  id="back-link" href="/"><p> Can't get enough? Click for more activities! </p></a>
+        <button type="button" id="log-out">No, I want out! ⛔️</button>
+    </footer>
+    </form>
+</body>
+</html>
