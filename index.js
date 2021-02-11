@@ -45,6 +45,14 @@ function displayActivity(activityObject){
 
     $postForm.addEventListener('submit', (event) => {
         event.preventDefault()
+        console.log(activityObject)
+
+        const activity = activityObject.activity
+        const accessibility = activityObject.accessibility
+        const participants = activityObject.participants
+        const price = activityObject.price
+        const key = activityObject.key
+        const type = activityObject.type
 
         fetch(`${backendURL}activities`, {
             method: "POST",
@@ -54,16 +62,14 @@ function displayActivity(activityObject){
             },
             body: JSON.stringify({
                 userID: userID,
-                activity: activityObject.activity,
-                accessibility: activityObject.type,
-                participants: activityObject.participants,
-                price: activityObject.price,
-                key: activityObject.key,
-                type: activityObject.type
+                activity: activity,
+                accessibility: accessibility,
+                participants: participants,
+                price: price,
+                key: key,
+                type: type
             })
         })
-        .then(response => response.json())
-        .then(result => console.log(result))
         .then(window.location.replace(`https://covid-boredom-buster.web.app/showFavorites.html?id=${userID}`))
     })
 }
