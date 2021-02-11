@@ -41,14 +41,13 @@ function displayActivity(activity){
     $activityPrice.textContent = `Price: ${setPrice(activity)}`
     $activityAccessibility.textContent = `Accessbility Rating: ${setAccessibility(activity)}`
 
-    const postParams = `${makeSaveParams(activity)}&userID=${userID}`
+
     $postForm.classList.remove('hidden')
-    // $postForm.action = `${backendURL}/activities?${postParams}`
 }
 
 $postForm.addEventListener('submit', (event) => {
     event.preventDefault()
-
+    const postParams = `${makeSaveParams(activity)}&userID=${userID}`
     fetch(`${backendURL}activities?${postParams}`, {
         method: "POST",
         headers: {
