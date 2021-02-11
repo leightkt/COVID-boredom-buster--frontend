@@ -34,12 +34,11 @@ setActivityOptions()
 fetch(`${backendURL}users/${userId}`)
     .then(response => response.json())
     .then(user =>{
-        console.log(user)
         userName = user.user.name
-        id = user.user.id
         $backLink.href = `https://covid-boredom-buster.web.app?name=${userName}`
         favoriteActivities = user.favorites
         user.favorites.forEach(favorite=>{
+            console.log(favorite)
             displayFavorite(favorite)
         })
         searchFilter()
@@ -56,7 +55,7 @@ function displayFavorite(favorite){
     div.id = favorite.id
     cardInfo.classList.add("card-info")
 
-    name.textContent = favorite.activity.name
+    name.textContent = `${favorite.activity.name}`
     access.textContent = `Accessibility level: ${favorite.activity.accessibility}`
     price.textContent = `Price: ${favorite.activity.price}`
     part.textContent = `Number of participants: ${favorite.activity.participants}`

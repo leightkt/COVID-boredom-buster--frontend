@@ -28,18 +28,18 @@ if (userName){
     })
 }
 
-function displayActivity(activity){
+function displayActivity(activityObject){
     $activityName = document.querySelector('#activity-name')
     $activityType = document.querySelector('#act-type')
     $activityParticipants = document.querySelector('#participants')
     $activityPrice = document.querySelector('#price')
     $activityAccessibility = document.querySelector('#accessibility')
 
-    $activityName.textContent = `Activity: ${activity.activity}`
-    $activityType.textContent = `Type: ${capFirstLetter(activity.type)}`
-    $activityParticipants.textContent = `Number of Participants: ${activity.participants}`
-    $activityPrice.textContent = `Price: ${setPrice(activity)}`
-    $activityAccessibility.textContent = `Accessbility Rating: ${setAccessibility(activity)}`
+    $activityName.textContent = `Activity: ${activityObject.activity}`
+    $activityType.textContent = `Type: ${capFirstLetter(activityObject.type)}`
+    $activityParticipants.textContent = `Number of Participants: ${activityObject.participants}`
+    $activityPrice.textContent = `Price: ${setPrice(activityObject)}`
+    $activityAccessibility.textContent = `Accessbility Rating: ${setAccessibility(activityObject)}`
 
     $postForm.classList.remove('hidden')
 
@@ -54,14 +54,16 @@ function displayActivity(activity){
             },
             body: JSON.stringify({
                 userID: userID,
-                name: activity.activity,
-                accessibility: activity.type,
-                participants: activity.participants,
-                price: activity.price,
-                key: activity.key,
-                type: activity.type
+                activity: activityObject.activity,
+                accessibility: activityObject.type,
+                participants: activityObject.participants,
+                price: activityObject.price,
+                key: activityObject.key,
+                type: activityObject.type
             })
         })
+        .then(response => response.json())
+        .then(result => console.log(result))
         .then(window.location.replace(`https://covid-boredom-buster.web.app/showFavorites.html?id=${userID}`))
     })
 }
@@ -78,8 +80,8 @@ $activityButton.addEventListener('click', (event) => {
     activityType = $activitySelect.value
     fetch(`${backendURL}getActivity?type=${activityType}`)
         .then(response => response.json())
-        .then(activity => {
-            displayActivity(activity)
+        .then(activityObject => {
+            displayActivity(activityObject)
         })
 })
 
