@@ -1,4 +1,4 @@
-const backendURL = 'https://covid-boredom-buster.herokuapp.com/'
+const backendURL = 'https://covid-boredom-buster-backend.herokuapp.com/'
 const activityTypes = ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
 const $activitySelect = document.querySelector("#activity-type")
 const $activityDisplay = document.querySelector("#display-activity")
