@@ -71,7 +71,7 @@ function addDeleteButton(favorite, div){
     $delButton.textContent = "Delete"
     $delButton.addEventListener('click', (event) => {
         div.remove()
-        fetch(`http://localhost:9000/favorites/${favorite.id}`, {
+        fetch(`${backendURL}favorites/${favorite.id}`, {
             method: 'DELETE'
         })
     })
