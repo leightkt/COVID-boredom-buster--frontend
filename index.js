@@ -91,7 +91,7 @@ function makeSaveParams(activity){
 setActivityOptions()
 
 $logOutButton.addEventListener('click', (event) => {
-    window.location.replace(https://covid-boredom-buster.web.app")
+    window.location.replace("https://covid-boredom-buster.web.app")
 })
 
 function setPrice(activity){
