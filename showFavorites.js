@@ -31,7 +31,7 @@ let favoriteActivities = null
 
 setActivityOptions()
 
-fetch(`${backendURL}users/${userId}`)
+fetch(`${backendURL}/users/${userId}`)
     .then(response => response.json())
     .then(user =>{
         console.log(user)
