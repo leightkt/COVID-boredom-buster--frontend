@@ -45,9 +45,9 @@ function displayActivity(activityObject){
 
     $postForm.addEventListener('submit', (event) => {
         event.preventDefault()
-        console.log(activityObject)
 
         const activity = activityObject.activity
+        console.log(activity)
         const accessibility = activityObject.accessibility
         const participants = activityObject.participants
         const price = activityObject.price

@@ -55,7 +55,7 @@ function displayFavorite(favorite){
     div.id = favorite.id
     cardInfo.classList.add("card-info")
 
-    name.textContent = `${favorite.activity.name}`
+    name.textContent = favorite.activity.name
     access.textContent = `Accessibility level: ${favorite.activity.accessibility}`
     price.textContent = `Price: ${favorite.activity.price}`
     part.textContent = `Number of participants: ${favorite.activity.participants}`
