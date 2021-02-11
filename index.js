@@ -46,6 +46,7 @@ function displayActivity(activity){
     $postForm.addEventListener('submit', (event) => {
         event.preventDefault()
         const postParams = `${makeSaveParams(activity)}&userID=${userID}`
+        console.log(postParams)
         fetch(`${backendURL}activities?${postParams}`, {
             method: "POST",
             headers: {
@@ -53,7 +54,7 @@ function displayActivity(activity){
                 "Content-Type": "application/json"
             }
         })
-            .then(window.location.replace(`https://covid-boredom-buster.web.app/showFavorites.html?id=${userID}`))
+        .then(window.location.replace(`https://covid-boredom-buster.web.app/showFavorites.html?id=${userID}`))
     })
 }
 
