@@ -31,12 +31,12 @@ let favoriteActivities = null
 
 setActivityOptions()
 
-fetch(`${backendURL}/users/${userId}`)
+fetch(`${backendURL}users/${userId}`)
     .then(response => response.json())
     .then(user =>{
         userName = user.user.name
         id = user.user.id
-        $backLink.href = `/?name=${userName}`
+        $backLink.href = `https://covid-boredom-buster.web.app?name=${userName}`
         favoriteActivities = user.favorites
         user.favorites.forEach(favorite=>{
             displayFavorite(favorite)
@@ -121,5 +121,5 @@ function searchFilter(){
 }
 
 $logOutButton.addEventListener('click', (event) => {
-    window.location.replace("/")
+    window.location.replace("https://covid-boredom-buster.web.app")
 })

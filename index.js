@@ -20,7 +20,7 @@ function setActivityOptions(){
 }
 
 if (userName){
-    fetch(`${backendURL}/userLogin?name=${userName}`)
+    fetch(`${backendURL}userLogin?name=${userName}`)
         .then(response => response.json())
         .then(user => {
             welcomeUser(user)
@@ -72,7 +72,7 @@ function welcomeUser(user){
 
 $activityButton.addEventListener('click', (event) => {
     activityType = $activitySelect.value
-    fetch(`${backendURL}/getActivity?type=${activityType}`)
+    fetch(`${backendURL}getActivity?type=${activityType}`)
         .then(response => response.json())
         .then(activity => {
             displayActivity(activity)
@@ -91,7 +91,7 @@ function makeSaveParams(activity){
 setActivityOptions()
 
 $logOutButton.addEventListener('click', (event) => {
-    window.location.replace("/")
+    window.location.replace(https://covid-boredom-buster.web.app")
 })
 
 function setPrice(activity){
