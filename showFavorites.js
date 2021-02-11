@@ -31,16 +31,7 @@ let favoriteActivities = null
 
 setActivityOptions()
 
-fetch(`${backendURL}users/${userId}`, {
-    method: "GET",
-    headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        id: userId
-    })
-})
+fetch(`${backendURL}users/${userId}`)
     .then(response => response.json())
     .then(user =>{
         console.log(user)
