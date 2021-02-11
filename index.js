@@ -43,8 +43,24 @@ function displayActivity(activity){
 
     const postParams = `${makeSaveParams(activity)}&userID=${userID}`
     $postForm.classList.remove('hidden')
-    $postForm.action = `${backendURL}/activities?${postParams}`
+    // $postForm.action = `${backendURL}/activities?${postParams}`
 }
+
+$postForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    fetch(`${backendURL}/activities?${postParams}`, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }
+    })
+        // .then(window.location.replace(`https://covid-boredom-buster.web.app/showFavorites.html?id=${userID}`))
+        .then(response => response.json())
+        .then(result => console.log(result))
+
+})
 
 function welcomeUser(user){
     $signInForm.classList.add('hidden')
