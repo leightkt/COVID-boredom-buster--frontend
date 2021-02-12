@@ -11,6 +11,7 @@ const $loading = document.querySelector(".loading")
 const queryParams = new URLSearchParams(window.location.search)
 const userName = queryParams.get('name')
 let userID = null
+let chosenActivity = null
 
 fetch(`${backendURL}/loading`)
     .then(response => response.json())
@@ -62,27 +63,30 @@ function welcomeUser(user){
 
 $activityButton.addEventListener('click', (event) => {
     $postForm.reset()
+    chosenActivity = null
     activityType = $activitySelect.value
     fetch(`${backendURL}getActivity?type=${activityType}`)
         .then(response => response.json())
         .then(activityObject => {
-            $postForm.removeEventListener("submit", addSubmit(activityObject))
+            chosenActivity = activityObject
             displayActivity(activityObject)
+            addSubmit(chosenActivity)
+            console.log(chosenActivity)
         })
 })
 
-function addSubmit(activityObject){
+function addSubmit(chosenActivity){
     $postForm.addEventListener('submit', (event) => {
         event.preventDefault()
 
 
-        const activity = activityObject.activity
+        let activity = chosenActivity.activity
         console.log(activity)
-        const accessibility = activityObject.accessibility
-        const participants = activityObject.participants
-        const price = activityObject.price
-        const key = activityObject.key
-        const type = activityObject.type
+        const accessibility = chosenActivity.accessibility
+        const participants = chosenActivity.participants
+        const price = chosenActivity.price
+        const key = chosenActivity.key
+        const type = chosenActivity.type
 
         fetch(`${backendURL}activities`, {
             method: "POST",
