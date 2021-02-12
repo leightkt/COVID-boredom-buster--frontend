@@ -61,6 +61,7 @@ function welcomeUser(user){
 }
 
 $activityButton.addEventListener('click', (event) => {
+    $postForm.reset()
     activityType = $activitySelect.value
     fetch(`${backendURL}getActivity?type=${activityType}`)
         .then(response => response.json())
@@ -69,9 +70,11 @@ $activityButton.addEventListener('click', (event) => {
             addSubmit(activityObject)
         })
 })
+
 function addSubmit(activityObject){
     $postForm.addEventListener('submit', (event) => {
         event.preventDefault()
+
 
         const activity = activityObject.activity
         console.log(activity)
