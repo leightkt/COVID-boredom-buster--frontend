@@ -31,6 +31,7 @@ if (userName){
     fetch(`${backendURL}userLogin?name=${userName}`)
         .then(response => response.json())
         .then(user => {
+            $loading.remove()
             welcomeUser(user)
             userID = user.id
     })
