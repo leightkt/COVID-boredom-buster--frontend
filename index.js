@@ -7,9 +7,17 @@ const $postForm = document.querySelector("#post-form")
 const $activitySelectForm = document.querySelector("#activity-select-form")
 const $activityButton = document.querySelector("#get-button")
 const $logOutButton = document.querySelector("#log-out")
+const $loading = document.querySelector(".loading")
 const queryParams = new URLSearchParams(window.location.search)
 const userName = queryParams.get('name')
 let userID = null
+
+fetch(`${backendURL}/loading`)
+    .then(response => response.json())
+    .then(result => {
+        $signInForm.classList.remove("hidden")
+        $loading.remove()
+    })
 
 function setActivityOptions(){
     activityTypes.forEach(activity => {
