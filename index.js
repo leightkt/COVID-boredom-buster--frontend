@@ -70,43 +70,41 @@ $activityButton.addEventListener('click', (event) => {
         .then(activityObject => {
             chosenActivity = activityObject
             displayActivity(activityObject)
-            addSubmit(chosenActivity)
-            console.log(chosenActivity)
         })
 })
 
-function addSubmit(chosenActivity){
-    $postForm.addEventListener('submit', (event) => {
-        event.preventDefault()
 
+$postForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+    event.stopPropagation()
 
-        let activity = chosenActivity.activity
-        console.log(activity)
-        const accessibility = chosenActivity.accessibility
-        const participants = chosenActivity.participants
-        const price = chosenActivity.price
-        const key = chosenActivity.key
-        const type = chosenActivity.type
+    let activity = chosenActivity.activity
+    console.log(activity)
+    const accessibility = chosenActivity.accessibility
+    const participants = chosenActivity.participants
+    const price = chosenActivity.price
+    const key = chosenActivity.key
+    const type = chosenActivity.type
 
-        fetch(`${backendURL}activities`, {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                userID: userID,
-                activity: activity,
-                accessibility: accessibility,
-                participants: participants,
-                price: price,
-                key: key,
-                type: type
-            })
+    fetch(`${backendURL}activities`, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userID: userID,
+            activity: activity,
+            accessibility: accessibility,
+            participants: participants,
+            price: price,
+            key: key,
+            type: type
         })
-        .then(window.location.replace(`https://covid-boredom-buster.web.app/showFavorites.html?id=${userID}`))
     })
-}
+    .then(window.location.replace(`https://covid-boredom-buster.web.app/showFavorites.html?id=${userID}`))
+})
+
 
 setActivityOptions()
 
