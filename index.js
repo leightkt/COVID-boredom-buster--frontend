@@ -16,7 +16,7 @@ fetch(`${backendURL}/loading`)
     .then(response => response.json())
     .then(result => {
         $signInForm.classList.remove("hidden")
-        $loading.remove()
+        $loading.classList.add("hidden")
     })
 
 function setActivityOptions(){
