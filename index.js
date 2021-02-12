@@ -18,20 +18,20 @@ fetch(`${backendURL}/loading`)
         $loading.remove()
     })
 
-function setActivityOptions(){
-    activityTypes.forEach(activity => {
-        const $activityOption = document.createElement('option')
-        $activityOption.textContent = activity
-        $activitySelect.appendChild($activityOption)
-    })
-}
-
 if (userName){
     fetch(`${backendURL}userLogin?name=${userName}`)
         .then(response => response.json())
         .then(user => {
             welcomeUser(user)
             userID = user.id
+    })
+}
+
+function setActivityOptions(){
+    activityTypes.forEach(activity => {
+        const $activityOption = document.createElement('option')
+        $activityOption.textContent = activity
+        $activitySelect.appendChild($activityOption)
     })
 }
 
@@ -50,6 +50,26 @@ function displayActivity(activityObject){
 
     $postForm.classList.remove('hidden')
 
+}
+
+function welcomeUser(user){
+    $signInForm.classList.add('hidden')
+    $userName = document.querySelector('#user-name')
+    $userName.textContent = `Welcome ${user.name}!`
+    $logOutButton.classList.remove("hidden")
+    $activitySelectForm.classList.remove("hidden")
+}
+
+$activityButton.addEventListener('click', (event) => {
+    activityType = $activitySelect.value
+    fetch(`${backendURL}getActivity?type=${activityType}`)
+        .then(response => response.json())
+        .then(activityObject => {
+            displayActivity(activityObject)
+            addSubmit(activityObject)
+        })
+})
+function addSubmit(activityObject){
     $postForm.addEventListener('submit', (event) => {
         event.preventDefault()
 
@@ -80,23 +100,6 @@ function displayActivity(activityObject){
         .then(window.location.replace(`https://covid-boredom-buster.web.app/showFavorites.html?id=${userID}`))
     })
 }
-
-function welcomeUser(user){
-    $signInForm.classList.add('hidden')
-    $userName = document.querySelector('#user-name')
-    $userName.textContent = `Welcome ${user.name}!`
-    $logOutButton.classList.remove("hidden")
-    $activitySelectForm.classList.remove("hidden")
-}
-
-$activityButton.addEventListener('click', (event) => {
-    activityType = $activitySelect.value
-    fetch(`${backendURL}getActivity?type=${activityType}`)
-        .then(response => response.json())
-        .then(activityObject => {
-            displayActivity(activityObject)
-        })
-})
 
 setActivityOptions()
 
