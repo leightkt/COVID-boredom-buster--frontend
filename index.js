@@ -15,8 +15,7 @@ let userID = null
 fetch(`${backendURL}/loading`)
     .then(response => response.json())
     .then(result => {
-        $signInForm.classList.remove("hidden")
-        $loading.classList.add("hidden")
+        $loading.remove()
     })
 
 function setActivityOptions(){
