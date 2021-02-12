@@ -66,9 +66,8 @@ $activityButton.addEventListener('click', (event) => {
     fetch(`${backendURL}getActivity?type=${activityType}`)
         .then(response => response.json())
         .then(activityObject => {
-            $postForm.removeEventListener("submit")
+            $postForm.removeEventListener("submit", addSubmit(activityObject))
             displayActivity(activityObject)
-            addSubmit(activityObject)
         })
 })
 
